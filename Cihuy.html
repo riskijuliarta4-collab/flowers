@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tulip Bouquet</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    radial-gradient(circle at top,
+    #4254a8 0%,
+    #20295d 35%,
+    #101632 70%,
+    #080d1f 100%);
+}
+
+/* bintang */
+
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    animation:twinkle linear infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.2;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.8);
+    }
+}
+
+.scene{
+    position:relative;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.bouquet{
+    width:550px;
+    filter:
+    drop-shadow(0 0 20px rgba(255,180,220,.2))
+    drop-shadow(0 0 40px rgba(255,180,220,.1));
+
+    transform-origin:center bottom;
+    animation:growBouquet 5s ease forwards;
+}
+
+.title{
+    position:absolute;
+    top:8%;
+    color:white;
+    text-align:center;
+    font-family:Georgia, serif;
+}
+
+.title h1{
+    font-weight:300;
+    letter-spacing:2px;
+}
+
+.title p{
+    opacity:.8;
+    margin-top:10px;
+}
+
+@keyframes growBouquet{
+
+    0%{
+        opacity:0;
+        transform:
+        translateY(350px)
+        scale(.15);
+    }
+
+    40%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:1;
+        transform:
+        translateY(0)
+        scale(1);
+    }
+
+}
+
+@keyframes bloomFlower{
+
+    0%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+@keyframes sway{
+
+    0%{
+        transform:rotate(-1deg);
+    }
+
+    50%{
+        transform:rotate(1deg);
+    }
+
+    100%{
+        transform:rotate(-1deg);
+    }
+
+}
+
+.flower{
+    transform-origin:center bottom;
+    opacity: 0;
+}
+
+.f1{
+    animation:
+    bloomFlower 1.5s ease forwards,
+    sway 4s ease-in-out infinite;
+    animation-delay:2s,4s;
+}
+
+.f2{
+    animation:
+    bloomFlower 1.5s ease forwards,
+    sway 4s ease-in-out infinite;
+    animation-delay:2.5s,4.5s;
+}
+
+.f3{
+    animation:
+    bloomFlower 1.5s ease forwards,
+    sway 4s ease-in-out infinite;
+    animation-delay:3s,5s;
+}
+
+.f4{
+    animation:
+    bloomFlower 1.5s ease forwards,
+    sway 4s ease-in-out infinite;
+    animation-delay:3.5s,5.5s;
+}
+
+.f5{
+    animation:
+    bloomFlower 1.5s ease forwards,
+    sway 4s ease-in-out infinite;
+    animation-delay:4s,6s;
+}
+
+.glow{
+    animation:
+    glowFlower 3s ease-in-out infinite;
+}
+
+@keyframes glowFlower{
+
+    0%,100%{
+        filter:
+        drop-shadow(0 0 8px rgba(255,180,220,.2));
+    }
+
+    50%{
+        filter:
+        drop-shadow(0 0 20px rgba(255,180,220,.6));
+    }
+
+}
+
+/* bulan */
+
+.moon{
+    position:absolute;
+    top:60px;
+    right:90px;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#fff6d5;
+
+    box-shadow:
+    0 0 25px rgba(255,245,190,.8),
+    0 0 70px rgba(255,245,190,.4);
+}
+
+/* partikel cahaya */
+
+.sparkle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:white;
+
+    box-shadow:
+    0 0 10px white;
+
+    animation:floatLight linear infinite;
+}
+
+@keyframes floatLight{
+
+    from{
+        transform:
+        translateY(100vh);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(-120px);
+        opacity:0;
+    }
+
+}
+
+/* pita */
+
+.ribbon{
+    opacity:0;
+    animation:showRibbon 2s forwards;
+    animation-delay:5s;
+}
+
+@keyframes showRibbon{
+
+    from{
+        opacity:0;
+        transform:scale(.3);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+/* kelopak beterbangan */
+
+.petal-fly{
+    position:absolute;
+    width:14px;
+    height:18px;
+
+    background:
+    linear-gradient(
+    #ffd8ea,
+    #ff9fc8);
+
+    border-radius:
+    100% 100% 100% 0;
+
+    opacity:0;
+
+    animation:
+    petalFly linear infinite;
+}
+
+@keyframes petalFly{
+
+    0%{
+        opacity:0;
+        transform:
+        translateY(-50px)
+        rotate(0deg);
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:
+        translateY(110vh)
+        translateX(150px)
+        rotate(720deg);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+<div class="moon"></div>
+
+<svg class="bouquet"
+viewBox="0 0 600 700">
+
+<defs>
+
+<linearGradient id="pink1"
+x1="0%" y1="0%"
+x2="0%" y2="100%">
+<stop offset="0%" stop-color="#ffe3ee"/>
+<stop offset="100%" stop-color="#ff7fb3"/>
+</linearGradient>
+
+<linearGradient id="pink2"
+x1="0%" y1="0%"
+x2="0%" y2="100%">
+<stop offset="0%" stop-color="#ffd8ea"/>
+<stop offset="100%" stop-color="#ff94c0"/>
+</linearGradient>
+
+</defs>
+
+<!-- batang -->
+
+<g stroke="#5c9b66" stroke-width="6">
+
+<line x1="300" y1="620" x2="300" y2="250"/>
+<line x1="300" y1="620" x2="220" y2="290"/>
+<line x1="300" y1="620" x2="380" y2="290"/>
+
+<line x1="300" y1="620" x2="170" y2="360"/>
+<line x1="300" y1="620" x2="430" y2="360"/>
+
+<line x1="300" y1="620" x2="250" y2="330"/>
+<line x1="300" y1="620" x2="350" y2="330"/>
+
+</g>
+
+<!-- daun -->
+
+<path
+d="M250 450
+C170 380 150 510 260 530"
+fill="#8fc68d"/>
+
+<path
+d="M350 450
+C430 380 450 510 340 530"
+fill="#8fc68d"/>
+
+<!-- tulip tengah -->
+
+<g class="flower f1"> 
+
+<ellipse
+cx="300"
+cy="220"
+rx="35"
+ry="70"
+fill="url(#pink1)"/>
+
+<ellipse
+cx="275"
+cy="235"
+rx="28"
+ry="60"
+fill="#ff9fc8"
+transform="rotate(-18 275 235)"/>
+
+<ellipse
+cx="325"
+cy="235"
+rx="28"
+ry="60"
+fill="#ff9fc8"
+transform="rotate(18 325 235)"/>
+
+</g>
+
+<!-- kiri -->
+
+<g class="flower f2">
+
+<ellipse
+cx="220"
+cy="270"
+rx="35"
+ry="70"
+fill="url(#pink1)"/>
+
+<ellipse
+cx="195"
+cy="285"
+rx="28"
+ry="60"
+fill="#ff9fc8"
+transform="rotate(-18 195 285)"/>
+
+<ellipse
+cx="245"
+cy="285"
+rx="28"
+ry="60"
+fill="#ff9fc8"
+transform="rotate(18 245 285)"/>
+
+</g>
+
+<!-- kanan -->
+
+<g class="flower f3">
+
+<ellipse
+cx="380"
+cy="270"
+rx="35"
+ry="70"
+fill="url(#pink1)"/>
+
+<ellipse
+cx="355"
+cy="285"
+rx="28"
+ry="60"
+fill="#ff9fc8"
+transform="rotate(-18 355 285)"/>
+
+<ellipse
+cx="405"
+cy="285"
+rx="28"
+ry="60"
+fill="#ff9fc8"
+transform="rotate(18 405 285)"/>
+
+</g>
+
+<!-- kiri luar -->
+
+<g class="flower f4">
+
+<ellipse
+cx="170"
+cy="350"
+rx="35"
+ry="70"
+fill="url(#pink2)"/>
+
+<ellipse
+cx="145"
+cy="365"
+rx="28"
+ry="60"
+fill="#ffb4d2"
+transform="rotate(-18 145 365)"/>
+
+<ellipse
+cx="195"
+cy="365"
+rx="28"
+ry="60"
+fill="#ffb4d2"
+transform="rotate(18 195 365)"/>
+
+</g>
+
+<!-- kanan luar -->
+
+<g class="flower f5">
+
+<ellipse
+cx="430"
+cy="350"
+rx="35"
+ry="70"
+fill="url(#pink2)"/>
+
+<ellipse
+cx="405"
+cy="365"
+rx="28"
+ry="60"
+fill="#ffb4d2"
+transform="rotate(-18 405 365)"/>
+
+<ellipse
+cx="455"
+cy="365"
+rx="28"
+ry="60"
+fill="#ffb4d2"
+transform="rotate(18 455 365)"/>
+
+</g>
+
+<!-- pita -->
+
+<g class="ribbon">
+
+<ellipse
+cx="270"
+cy="560"
+rx="32"
+ry="20"
+fill="#ff7fb3"/>
+
+<ellipse
+cx="330"
+cy="560"
+rx="32"
+ry="20"
+fill="#ff7fb3"/>
+
+<rect
+x="287"
+y="545"
+width="26"
+height="30"
+rx="8"
+fill="#ff5f9e"/>
+
+<polygon
+points="288,575 255,620 290,595"
+fill="#ff6ba5"/>
+
+<polygon
+points="312,575 345,620 310,595"
+fill="#ff6ba5"/>
+
+</g>
+
+</svg>
+
+</div>
+
+<script>
+
+for(let i=0;i<150;i++){
+
+const star=document.createElement("div");
+
+star.classList.add("star");
+
+const size=Math.random()*3+1;
+
+star.style.width=size+"px";
+star.style.height=size+"px";
+
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDuration=
+(Math.random()*4+2)+"s";
+
+document.body.appendChild(star);
+
+}
+
+</script>
+
+<script>
+
+/* partikel cahaya */
+
+for(let i=0;i<25;i++){
+
+const light=document.createElement("div");
+
+light.classList.add("sparkle");
+
+light.style.left=
+Math.random()*100+"vw";
+
+light.style.top=
+Math.random()*100+"vh";
+
+light.style.animationDuration=
+(Math.random()*8+6)+"s";
+
+light.style.animationDelay=
+Math.random()*8+"s";
+
+document.body.appendChild(light);
+
+}
+
+/* kelopak beterbangan */
+
+for(let i=0;i<20;i++){
+
+const petal=document.createElement("div");
+
+petal.classList.add("petal-fly");
+
+petal.style.left=
+(20+Math.random()*60)+"vw";
+
+petal.style.animationDelay=
+(6+Math.random()*10)+"s";
+
+petal.style.animationDuration=
+(8+Math.random()*8)+"s";
+
+document.body.appendChild(petal);
+
+}
+
+</script>
+
+</body>
+</html>
